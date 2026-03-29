@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mayane & Mikhael | L'Union</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-blue: #B0C4DE;
+            --pastel-gold: #D4AF37;
+            --soft-ivory: #F9F6F0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            background-color: #1a1a1a;
+            color: var(--soft-ivory);
+            font-family: 'Montserrat', sans-serif;
+            height: 100dvh; width: 100vw; overflow: hidden;
+            display: flex; justify-content: center; align-items: center; text-align: center;
+        }
+        .bg-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            filter: brightness(0.5);
+            background: url('photo_fond.jpg') no-repeat center center / cover;
+        }
+        .intro-container {
+            z-index: 1; opacity: 0; animation: fadeIn 2s ease-out forwards 0.5s;
+            width: 100%; padding: 0 20px;
+        }
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 12vw, 5rem);
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #fff, var(--pastel-blue));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .countdown-container { display: flex; justify-content: center; gap: 10px; margin: 25px 0; }
+        .unit {
+            width: 65px; height: 65px; background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px); border-radius: 8px;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        .num { font-size: 1.4rem; font-weight: 600; }
+        .label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; }
+        .date {
+            font-size: 1rem; letter-spacing: 4px; padding: 15px 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 40px;
+        }
+        .enter-btn {
+            display: inline-block; width: 85%; max-width: 350px; padding: 20px;
+            background: linear-gradient(45deg, #A7C7E7, #C1E1C1); /* Pastels sophistiqués */
+            color: #444; text-decoration: none; font-size: 0.9rem;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 600;
+            border-radius: 50px; box-shadow: 0 10px 30px rgba(167,199,231,0.4);
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="intro-container">
+        <h1>Mayane & Mikhael</h1>
+        <div class="countdown-container" id="timer">
+            <div class="unit"><span class="num" id="days">00</span><span class="label">Jours</span></div>
+            <div class="unit"><span class="num" id="hours">00</span><span class="label">Hrs</span></div>
+            <div class="unit"><span class="num" id="mins">00</span><span class="label">Min</span></div>
+            <div class="unit"><span class="num" id="secs">00</span><span class="label">Sec</span></div>
+        </div>
+        <p class="date">29 JUILLET 2026</p>
+        <a href="invitation.html" class="enter-btn">Découvrir l'invitation</a>
+    </div>
+
+    <script>
+        const targetDate = new Date("July 29, 2026 17:30:00").getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, "0");
+                document.getElementById("hours").innerText = Math.floor((diff / (1000 * 60 * 60)) % 24).toString().padStart(2, "0");
+                document.getElementById("mins").innerText = Math.floor((diff / (1000 * 60)) % 60).toString().padStart(2, "0");
+                document.getElementById("secs").innerText = Math.floor((diff / 1000) % 60).toString().padStart(2, "0");
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
