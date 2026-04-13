@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --sage: #8DA399; /* Vert sauge élégant */
-            --dusty-blue: #B0C4DE; /* Bleu poudré */
-            --gold: #C5A059; /* Or vieilli */
+            --sage: #8DA399;
+            --dusty-blue: #B0C4DE;
+            --gold: #C5A059;
             --soft-white: #FDFBF7;
             --text-dark: #2c2c2c;
         }
@@ -50,22 +50,17 @@
         header {
             height: 55vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            /* Image de fond par défaut, à remplacer par pyramides_fond.jpg si disponible */
             background: linear-gradient(to bottom, rgba(255,255,255,0.1), var(--soft-white)), url('pyramides_fond.jpg') no-repeat center center / cover;
             text-align: center; padding: 20px;
         }
 
-        /* --- CORRECTION ICI POUR LE LOGO IMAGE --- */
         .logo-main {
-            width: clamp(120px, 35vw, 200px); /* Taille adaptative */
+            width: clamp(120px, 35vw, 200px);
             height: auto;
             margin-bottom: 15px;
             opacity: 0.9;
             animation: float 4s ease-in-out infinite;
-            /* Optionnel: filtre pour adoucir le logo s'il est trop agressif */
-            /* filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1)); */
         }
-        /* ----------------------------------------- */
 
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
@@ -100,9 +95,10 @@
         }
 
         .image-section { width: 100%; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); overflow: hidden; margin: 25px 0; }
-        /* Images par défaut, à remplacer par vos propres fichiers si disponible */
+        
+        /* AJOUT DE VOTRE IMAGE COUPLE ICI */
+        .img-couple { height: 450px; background: url('couple.jpeg') no-repeat center center / cover; }
         .img-mairie { height: 250px; background: url('mairie_stbrice.jpg') no-repeat center center / cover; background-color: #eee; }
-        .img-soiree { height: 400px; background: url('pyramides_interieur.jpg') no-repeat center center / cover; background-color: #eee; }
 
         .card-type { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--sage); margin-bottom: 10px; font-weight: 600; }
         .card-title { font-size: clamp(1.8rem, 6vw, 2.5rem); color: var(--gold); margin-bottom: 10px; }
@@ -151,10 +147,10 @@
         </div>
     </div>
 
-    <div class="image-section img-mairie reveal"></div>
+    <div class="image-section img-couple reveal"></div>
 
     <div class="wedding-card reveal">
-        <img src="hebreu.png" alt="Bénédiction" style="width: 80%; max-width: 300px; margin: 0 auto 10px; display: block; filter: sepia(1) saturate(0.5);">
+        <img src="phrase12.png" alt="Bénédiction" style="width: 80%; max-width: 300px; margin: 0 auto 10px; display: block; filter: sepia(1) saturate(0.5);">
         <p class="card-type" style="margin-bottom: 20px;">Cérémonie Religieuse</p>
         <div style="margin: 25px 0;">
             <p style="font-size: 1rem; color: var(--text-dark); line-height: 1.6; font-style: italic;">
@@ -175,8 +171,6 @@
             <button onclick="addToCalendar('houppa')" class="btn-action btn-outline">Bloquer la Date</button>
         </div>
     </div>
-
-    <div class="image-section img-soiree reveal"></div>
 
     <div class="wedding-card reveal">
         <p class="card-type">Réponse souhaitée</p>
@@ -276,7 +270,6 @@
     function toggleMairie() { document.getElementById('section_mairie').style.display = (document.getElementById('presence_mairie').value === 'oui') ? 'block' : 'none'; }
     function toggleHouppa() { document.getElementById('section_houppa').style.display = (document.getElementById('presence_houppa').value === 'oui') ? 'block' : 'none'; }
 
-    // --- MUSIQUE & ANIMATION ---
     const audio = document.getElementById('weddingMusic');
     const musicToggle = document.getElementById('musicToggle');
     musicToggle.addEventListener('click', () => {
