@@ -7,61 +7,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --pastel-blue-dark: #8294ad; /* Bleu plus soutenu pour la lisibilité */
-            --soft-ivory: #F9F6F0;
+            /* Palette Originale de Karen & Yossef pour la lisibilité */
+            --fuchsia: #D82D7E;
+            --coral: #FF7F50;
+            --gold-light: #f4e4bc;
+            /* Mais on garde vos couleurs pastels pour le bouton uniquement */
             --btn-grad-1: #A7C7E7; 
             --btn-grad-2: #C1E1C1;
-            --text-main: #333333; /* Gris très foncé presque noir pour bien voir les noms */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            background-color: #fff;
-            color: var(--text-main);
+            background-color: #0a0a0a; /* Fond sombre pour le contraste */
+            color: var(--gold-light);
             font-family: 'Montserrat', sans-serif;
             height: 100dvh; width: 100vw; 
-            overflow: hidden;
+            overflow: hidden; 
             display: flex; justify-content: center; align-items: center; 
             text-align: center; position: relative;
         }
 
-        /* --- FOND CLAIR --- */
+        /* --- IMAGE DU COUPLE (style Karen & Yossef) --- */
         .bg-image {
             position: absolute; top: 0; left: 0; 
             width: 100%; height: 100%; 
             z-index: -1;
             background: url('couple.jpeg') no-repeat center center / cover;
-            filter: brightness(0.75) saturate(0.9); 
+            /* Filtre sombre pour que l'écriture blanche ressorte */
+            filter: brightness(0.5) saturate(0.8); 
         }
 
-        .bg-image::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.2); /* Voile blanc léger */
-        }
-
+        /* --- BLOC CENTRAL REMONTÉ --- */
         .intro-container {
             z-index: 1; 
             opacity: 0; 
             animation: fadeIn 2s ease-out forwards 0.5s;
             width: 100%; padding: 0 20px;
             display: flex; flex-direction: column; align-items: center;
+            /* On remonte de 8vh par rapport au centre */
+            transform: translateY(-8vh); 
         }
 
-        /* --- TITRE PLUS VOYANT --- */
+        /* --- ÉCRITURE ORIGINALE (style Karen & Yossef) --- */
         h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(3.5rem, 15vw, 6rem); /* Un peu plus grand */
+            font-size: clamp(3.5rem, 15vw, 5.8rem);
             font-weight: 400;
             margin-bottom: 5px;
-            /* Dégradé plus contrasté */
-            background: linear-gradient(to bottom, #222 30%, var(--pastel-blue-dark));
+            background: linear-gradient(to bottom, #fff, var(--gold-light));
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent;
-            /* Double ombre pour faire "sortir" les prénoms du fond */
-            text-shadow: 2px 2px 15px rgba(255,255,255,1), 0px 0px 10px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.9); /* Ombre portée forte */
             padding-bottom: 5px;
         }
 
@@ -72,57 +69,55 @@
 
         .unit {
             width: 65px; height: 65px; 
-            background: rgba(255, 255, 255, 0.8); 
-            border: 1px solid rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.7); /* Fond sombre pour le timer */
+            border: 1px solid rgba(244,228,188,0.2);
+            backdrop-filter: blur(8px);
             border-radius: 8px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .num { font-size: 1.5rem; font-weight: 600; color: #000; }
-        .label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; color: #555; }
+        .num { font-size: 1.5rem; font-weight: 600; color: #fff; }
+        .label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* --- DATE PLUS VOYANTE --- */
         .date {
-            font-size: 1.1rem; /* Plus grand */
-            font-weight: 600; /* Plus gras */
-            letter-spacing: 6px; 
-            padding: 18px 0; min-width: 280px;
-            color: #222; /* Noir doux */
-            border-top: 2px solid rgba(0, 0, 0, 0.1); /* Ligne plus épaisse */
-            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            margin-bottom: 45px;
-            text-shadow: 1px 1px 0px rgba(255,255,255,1);
+            font-size: 1rem; letter-spacing: 5px; 
+            padding: 12px 0; min-width: 250px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 50px; /* Espace avant le bouton */
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
+        /* --- BOUTON PASTEL (Vos couleurs) --- */
         .enter-btn {
             display: inline-block; 
             width: 90%; max-width: 380px;
             padding: 22px;
+            /* On garde votre dégradé pastel original */
             background: linear-gradient(45deg, var(--btn-grad-1), var(--btn-grad-2));
-            color: #fff;
+            color: #444; /* Texte sombre pour le contraste sur bouton clair */
             text-decoration: none; 
-            font-size: 1rem; font-weight: 600;
+            font-size: 0.95rem; font-weight: 600;
             text-transform: uppercase; letter-spacing: 3px;
             border-radius: 50px; 
-            box-shadow: 0 10px 25px rgba(167,199,231,0.6);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(167,199,231,0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .enter-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
+        /* Animation d'apparition adaptée pour le mouvement vers le haut */
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(25px); } 
-            to { opacity: 1; transform: translateY(0); } 
+            from { opacity: 0; transform: translateY(calc(-8vh + 30px)); } 
+            to { opacity: 1; transform: translateY(-8vh); } 
         }
 
         @media (max-width: 370px) {
-            h1 { font-size: 3.5rem; }
+            h1 { font-size: 3.3rem; }
             .unit { width: 58px; height: 58px; }
-            .date { font-size: 0.9rem; letter-spacing: 4px; min-width: 240px; }
+            .date { font-size: 0.9rem; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -162,7 +157,7 @@
                 document.getElementById("mins").innerText = m.toString().padStart(2, "0");
                 document.getElementById("secs").innerText = s.toString().padStart(2, "0");
             } else {
-                document.getElementById("timer").innerHTML = "<h2 style='font-family:Great Vibes;color:#222;font-size:2.5rem;'>C'est le grand jour ✨</h2>";
+                document.getElementById("timer").innerHTML = "<h2 style='font-family:Great Vibes;color:white;font-size:2rem;'>C'est le grand jour ✨</h2>";
             }
         }
 
