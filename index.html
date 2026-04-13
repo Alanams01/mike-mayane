@@ -32,13 +32,15 @@
             filter: brightness(0.55) saturate(0.85); 
         }
 
+        /* BLOC CENTRAL MAINTENU EN HAUT */
         .intro-container {
             z-index: 1; 
             opacity: 0; 
             animation: fadeIn 2s ease-out forwards 0.5s;
             width: 100%; padding: 0 20px;
             display: flex; flex-direction: column; align-items: center;
-            transform: translateY(-12vh); /* Ajusté légèrement */
+            /* Positionné assez haut pour dégager le bas de la photo */
+            transform: translateY(-15vh); 
         }
 
         h1 {
@@ -75,10 +77,12 @@
             padding: 12px 0; min-width: 250px;
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
-            margin-bottom: 90px; /* Remonté (au lieu de 150px) */
+            /* Énorme marge pour pousser le bouton vers le bas de l'écran */
+            margin-bottom: 150px; 
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
+        /* BOUTON PLACÉ TOUT EN BAS */
         .enter-btn {
             display: inline-block; 
             width: 90%; max-width: 380px;
@@ -91,37 +95,44 @@
             border-radius: 50px; 
             box-shadow: 0 10px 25px rgba(167,199,231,0.5);
             transition: transform 0.2s ease;
-            transform: translateY(20px); /* Ajusté légèrement */
+            /* Poussée supplémentaire vers le bas */
+            transform: translateY(40px); 
         }
 
         .enter-btn:active {
-            transform: translateY(20px) scale(0.97);
+            transform: translateY(40px) scale(0.97);
         }
 
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(calc(-12vh + 30px)); } 
-            to { opacity: 1; transform: translateY(-12vh); } 
+            from { opacity: 0; transform: translateY(calc(-15vh + 30px)); } 
+            to { opacity: 1; transform: translateY(-15vh); } 
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 3.5rem; }
-            .date { margin-bottom: 80px; }
+            .date { margin-bottom: 120px; } /* Adapté pour les petits écrans */
+            .enter-btn { padding: 18px; }
         }
     </style>
 </head>
 <body>
     <div class="bg-image"></div>
+
     <div class="intro-container">
         <h1>Mayane & Mikhael</h1>
+
         <div class="countdown-container" id="timer">
             <div class="unit"><span class="num" id="days">00</span><span class="label">Jours</span></div>
             <div class="unit"><span class="num" id="hours">00</span><span class="label">Hrs</span></div>
             <div class="unit"><span class="num" id="mins">00</span><span class="label">Min</span></div>
             <div class="unit"><span class="num" id="secs">00</span><span class="label">Sec</span></div>
         </div>
+
         <p class="date">29 JUILLET 2026</p>
+
         <a href="invitation.html" class="enter-btn">Découvrir l'invitation</a>
     </div>
+
     <script>
         const targetDate = new Date("July 29, 2026 17:30:00").getTime();
         function updateCountdown() {
