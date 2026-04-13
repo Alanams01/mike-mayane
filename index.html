@@ -32,15 +32,13 @@
             filter: brightness(0.55) saturate(0.85); 
         }
 
-        /* BLOC CENTRAL MAINTENU EN HAUT */
         .intro-container {
             z-index: 1; 
             opacity: 0; 
             animation: fadeIn 2s ease-out forwards 0.5s;
             width: 100%; padding: 0 20px;
             display: flex; flex-direction: column; align-items: center;
-            /* Positionné assez haut pour dégager le bas de la photo */
-            transform: translateY(-15vh); 
+            transform: translateY(-7vh); 
         }
 
         h1 {
@@ -77,12 +75,11 @@
             padding: 12px 0; min-width: 250px;
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
-            /* Énorme marge pour pousser le bouton vers le bas de l'écran */
-            margin-bottom: 150px; 
+            /* BOUTON DESCENDU ICI */
+            margin-bottom: 110px; 
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
 
-        /* BOUTON PLACÉ TOUT EN BAS */
         .enter-btn {
             display: inline-block; 
             width: 90%; max-width: 380px;
@@ -95,22 +92,21 @@
             border-radius: 50px; 
             box-shadow: 0 10px 25px rgba(167,199,231,0.5);
             transition: transform 0.2s ease;
-            /* Poussée supplémentaire vers le bas */
-            transform: translateY(40px); 
         }
 
         .enter-btn:active {
-            transform: translateY(40px) scale(0.97);
+            transform: scale(0.97);
         }
 
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(calc(-15vh + 30px)); } 
-            to { opacity: 1; transform: translateY(-15vh); } 
+            from { opacity: 0; transform: translateY(calc(-7vh + 30px)); } 
+            to { opacity: 1; transform: translateY(-7vh); } 
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 3.5rem; }
-            .date { margin-bottom: 120px; } /* Adapté pour les petits écrans */
+            /* Ajustement pour mobile pour ne pas que le bouton sorte de l'écran */
+            .date { margin-bottom: 90px; }
             .enter-btn { padding: 18px; }
         }
     </style>
