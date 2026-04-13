@@ -32,13 +32,15 @@
             filter: brightness(0.55) saturate(0.85); 
         }
 
+        /* TOUT LE BLOC EST DESCENDU ICI */
         .intro-container {
             z-index: 1; 
             opacity: 0; 
             animation: fadeIn 2s ease-out forwards 0.5s;
             width: 100%; padding: 0 20px;
             display: flex; flex-direction: column; align-items: center;
-            transform: translateY(-7vh); 
+            /* Changé de -7vh à 2vh pour tout descendre d'un coup */
+            transform: translateY(2vh); 
         }
 
         h1 {
@@ -75,7 +77,6 @@
             padding: 12px 0; min-width: 250px;
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
-            /* BOUTON DESCENDU ICI */
             margin-bottom: 110px; 
             text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
         }
@@ -99,13 +100,13 @@
         }
 
         @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(calc(-7vh + 30px)); } 
-            to { opacity: 1; transform: translateY(-7vh); } 
+            /* On synchronise l'animation avec la nouvelle position */
+            from { opacity: 0; transform: translateY(calc(2vh + 30px)); } 
+            to { opacity: 1; transform: translateY(2vh); } 
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 3.5rem; }
-            /* Ajustement pour mobile pour ne pas que le bouton sorte de l'écran */
             .date { margin-bottom: 90px; }
             .enter-btn { padding: 18px; }
         }
